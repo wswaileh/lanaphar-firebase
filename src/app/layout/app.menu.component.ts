@@ -1,10 +1,14 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
+import { AppMenuitemComponent } from './app.menuitem.component';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-menu',
-    templateUrl: './app.menu.component.html'
+    templateUrl: './app.menu.component.html',
+    standalone: true,
+    imports: [CommonModule, NgIf, AppMenuitemComponent]
 })
 export class AppMenuComponent implements OnInit {
 
