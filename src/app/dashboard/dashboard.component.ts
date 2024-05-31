@@ -7,8 +7,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   imports: [
     CommonModule,
   ],
-  template: `<p>dashboard works!</p>`,
-  styleUrl: './dashboard.component.css',
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent { }

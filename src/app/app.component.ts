@@ -12,7 +12,7 @@ import { AppConfig, LayoutService } from './layout/service/app.layout.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'myapp';
+  title = 'Lana Pharmacy';
   
   constructor(private primengConfig: PrimeNGConfig, private layoutService: LayoutService) { }
 
