@@ -1,55 +1,49 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
 
-interface InventoryStatus {
-    label: string;
-    value: string;
-}
 export interface Product {
-    id?: string;
-    code?: string;
-    name?: string;
-    description?: string;
-    price?: number;
-    quantity?: number;
-    inventoryStatus?: InventoryStatus;
-    category?: string;
-    image?: string;
-    rating?: number;
+  uuid?: string;
+  name?: string;
+  barcode?: number;
+  company?: string;
+  cost_price?: number;
+  selling_price?: number;
+  quantity?: number;
 }
 
 @Injectable({
-    'providedIn': 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  private item$: Observable<Product[]>;
+  private firestore: Firestore = inject(Firestore);
 
-    constructor(private http: HttpClient) { }
+  constructor() {
+    // const collectionName = 'drugs';
+    // const itemCollection = collection(this.firestore, collectionName);
+    // this.item$ = collectionData<Product>(itemCollection, collectionName);
+    this.item$ = this.getItems$();
+  }
 
-    getProductsSmall() {
-        return this.http.get<any>('assets/demo/data/products-small.json')
-            .toPromise()
-            .then(res => res.data as Product[])
-            .then(data => data);
-    }
-
-    getProducts() {
-        return this.http.get<any>('assets/demo/data/products.json')
-            .toPromise()
-            .then(res => res.data as Product[])
-            .then(data => data);
-    }
-
-    getProductsMixed() {
-        return this.http.get<any>('assets/demo/data/products-mixed.json')
-            .toPromise()
-            .then(res => res.data as Product[])
-            .then(data => data);
-    }
-
-    getProductsWithOrdersSmall() {
-        return this.http.get<any>('assets/demo/data/products-orders-small.json')
-            .toPromise()
-            .then(res => res.data as Product[])
-            .then(data => data);
-    }
+  public getItems$(): Observable<Product[]> {
+    // return this.item$;
+    return of([
+      {
+        name: 'Acamol',
+        selling_price: 10,
+        uuid: "1234",
+        barcode: 1234,
+        company: 'TEVA'
+      },
+      {
+        name: 'Panadol',
+        selling_price: 15,
+        uuid: "12348539",
+        barcode: 12348539,
+        company: 'Swaileh'
+      }
+    ])
+  }
 }

@@ -98,6 +98,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sakai-ng:build:production",
+              "serveTarget": "sakai-ng:serve:production"
+            },
+            "development": {
+              "buildTarget": "sakai-ng:build:development",
+              "serveTarget": "sakai-ng:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

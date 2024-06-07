@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "lanaphar"
+  },
+  "targets": {
+    "lanaphar": {
+      "hosting": {
+        "sakai-ng": [
+          "lanaphar"
+        ]
+      }
+    }
   }
 }
